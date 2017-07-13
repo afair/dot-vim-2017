@@ -33,7 +33,7 @@ set hlsearch                    " Highlights search terms: hls, nohls
 set ignorecase                  " Ignore Case on search: ignorecase, noignorecase
 set smartcase                   " When searching with uppercase, turns off ignorecase
 set incsearch                   " Incremental search while you are typing
-noremap <CR> :nohlsearch<CR>:set nolist<CR>j^
+noremap <CR> :nohlsearch<CR>j^
 
 " Abbreviations: common typing error corrections
 ab teh the
@@ -203,12 +203,6 @@ noremap <Leader>ra :A<CR>
 " elm
 " c.vim
 
-" This function hack runs AFTER load, so we can correct mappings by plugins, etc.
-autocmd VimEnter * call RunAfterLoad()
-function RunAfterLoad()
-
-endfunction
-
 "===============================================================================
 " My Functions
 "===============================================================================
@@ -251,6 +245,12 @@ noremap <Leader>n :call RotateNumber()<CR>
 "===============================================================================
 " Epilogue: Source .vimrc.local if exists
 "===============================================================================
+
+" This function hack runs AFTER load, so we can correct mappings by plugins, etc.
+autocmd VimEnter * call RunAfterLoad()
+function RunAfterLoad()
+
+endfunction
 
 if filereadable(expand("~/.vimrc.local"))
 	source ~/.vimrc.local
