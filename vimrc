@@ -58,6 +58,7 @@ inoremap <Leader>p gqap
 noremap <Leader>\ :wincmd w<CR>
 noremap c_ ct_
 noremap _ f_<Right>
+nnoremap <leader># 80i#<Esc>
 
 " More: \V reloadVimrc, \gw grepWord, \cf nextConflict, \a AckWord, \" Dup
 "nnoremap <leader>sv :source ~/.vimrc<CR>
@@ -68,7 +69,8 @@ nnoremap <leader>a *<C-O>:AckFromSearch!<CR>
 " Duplicate: line/vblock
 noremap <Leader>" Yp
 vnoremap <Leader>" yPgv
-vnoremap <Leader>= :Align=<CR>
+vnoremap <Leader>= :Tabularize /=<CR>
+noremap <Leader>= :Tabularize /=<CR>
 
 " Reselect visual block after shift, Duplicate Line/Block
 vnoremap < <gv
@@ -136,7 +138,7 @@ noremap <Leader>o :CtrlP<CR>
 noremap <Leader>r :tabnew<CR>:CtrlP<CR>
 noremap <Leader>i :split<CR><C-w>j:CtrlP<CR>
 noremap <Leader>v :vsplit<CR><C-w>l:CtrlP<CR>
-"inoremap <Leader>t <Esc>:tabnew<CR>:CtrlP<CR>
+noremap <Leader>t <Esc>:tabnew<CR>:CtrlP<CR>
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 " vim-airline - Statusbar
@@ -155,7 +157,9 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 " buffergator
-noremap <Leader>T :BuffergatorTabsToggle<CR>
+let g:buffergator_suppress_keymaps=1
+noremap <Leader>b :BuffergatorTabsToggle<CR>
+"noremap <Leader>T :BuffergatorTabsToggle<CR>
 " tablular
 " matchit
 
@@ -179,6 +183,9 @@ noremap <Leader>ra :A<CR>
 " vim-ruby
 " rspec
 " vim-rspec
+let g:rspec_runner = "os_x_iterm2"
+let g:rspec_command = "!bin/rspec {spec}"
+noremap <Leader>s :call RunCurrentSpecFile()<CR>
 " vim-haml
 " bundler.vim
 " endwise
@@ -249,7 +256,7 @@ noremap <Leader>n :call RotateNumber()<CR>
 " This function hack runs AFTER load, so we can correct mappings by plugins, etc.
 autocmd VimEnter * call RunAfterLoad()
 function RunAfterLoad()
-
+  inoremap <Leader>t <Esc>:tabnew<CR>:CtrlP<CR>
 endfunction
 
 if filereadable(expand("~/.vimrc.local"))
