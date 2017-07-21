@@ -11,6 +11,27 @@ This repo uses submodules (sorry) to manage the plugins.
     cd
     git clone --recursive git@github.com:afair/dot-vim-2017.git .vim2
 
+### Making this your primary configuration
+
+Instead, clone into ~/.vim and create symlinks for the .\*rc files:
+
+    cd
+    git clone --recursive git@github.com:afair/dot-vim-2017.git .vim
+    ln -s .vim/vimrc .vimrc
+    ln -s .vim/gvimrc .gvimrc
+    vim .vim/vimrc
+
+The vim startup will throw an error, but that's what we're going to fix.
+Hit enter to clear messages and edit the file.
+Comment out this line near the top by inserting a double-quote at the
+beginning of the line like so:
+
+    " let &rtp = substitute(&rtp, '\.vim\>', '.vim2', 'g')
+
+That line tells vim where to load pathogen and plugins. Save and restart
+vim. Things should be normal. (Alternatively, you can create a symlink
+from .vim to .vim2 as a workaround.)
+
 ## Manage multiple dot-vim configurations
 
 This technique is useful to:
