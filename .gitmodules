@@ -130,3 +130,6 @@
 [submodule "bundle/vim-rspec"]
 	path = bundle/vim-rspec
 	url = https://github.com/thoughtbot/vim-rspec.git
+[submodule "bundle/vim-crystal"]
+	path = bundle/vim-crystal
+	url = https://github.com/rhysd/vim-crystal.git

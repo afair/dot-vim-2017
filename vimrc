@@ -112,6 +112,8 @@ augroup myfiletypes
   " "autocmd FileType ruby iab def def<cr>end<esc>-A
 augroup END
 
+set backupdir^=~/.vim/_backup//    " where to put backup files.
+set directory^=~/.vim/_temp//      " where to put swap files.
 
 "===============================================================================
 " Plugins & Configurations
@@ -201,6 +203,7 @@ noremap <Leader>s :call RunCurrentSpecFile()<CR>
 " # Web ------------------------------------------------------------------------
 " html5
 " vim-markdown
+let g:vim_markdown_folding_disabled = 1
 " json-vim
 " # Other ----------------------------------------------------------------------
 " php
