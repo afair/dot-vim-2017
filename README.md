@@ -97,6 +97,10 @@ Once satisfied, Save the repo to one you just created on github.
     git remote add origin git@github.com:xxxxx/dot-vim.git
     git push -u origin master
 
+To update the submodule plugins, do:
+
+    git submodule update --recursive --remote
+
 ### Extra Credit
 
 Write a "vim configuration switcher" script that will swap links for .vim, .vimrc, and .gvimrc to .vim-$VERSION, .vim-$VERSION/vimrc, and .vim-$VERSION/gvimrc respectively. Until then, the above alias' are sufficient.

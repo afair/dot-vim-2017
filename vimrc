@@ -14,7 +14,8 @@ execute pathogen#infect()
 
 syntax on
 filetype plugin indent on
-colorscheme vibrantink
+"colorscheme vibrantink
+colorscheme dracula
 set number
 set textwidth=0
 set formatoptions-=t            " Turn off auto-wrap text
