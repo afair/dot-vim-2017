@@ -14,8 +14,8 @@ execute pathogen#infect()
 
 syntax on
 filetype plugin indent on
-"colorscheme vibrantink
-colorscheme dracula
+colorscheme vibrantink
+"colorscheme dracula
 set number
 set textwidth=0
 set formatoptions-=t            " Turn off auto-wrap text
@@ -56,6 +56,7 @@ noremap <Leader>p :set invpaste<CR>
 noremap <Leader>G :GitGutterToggle<CR>
 inoremap jk <Esc>
 inoremap <Leader>p gqap
+inoremap {<CR> {}<Left><CR><CR><Up><Tab>
 noremap <Leader>\ :wincmd w<CR>
 noremap c_ ct_
 noremap _ f_<Right>
