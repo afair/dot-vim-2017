@@ -6,7 +6,7 @@
 "     alias mv2='mvim -u ~/.vim2/vimrc -U ~/.vim2/gvimrc'
 "-------------------------------------------------------------------------------
 " Use the following line only when using an alternate repo!
-let &rtp = substitute(&rtp, '\.vim\>', '.vim2', 'g')
+"let &rtp = substitute(&rtp, '\.vim\>', '.vim2', 'g')
 "-------------------------------------------------------------------------------
 set nocompatible
 execute pathogen#infect()
@@ -73,6 +73,9 @@ noremap <Leader>" Yp
 vnoremap <Leader>" yPgv
 vnoremap <Leader>= :Tabularize /=<CR>
 noremap <Leader>= :Tabularize /=<CR>
+" surrounds current word with quotes
+map <Leader>' ysiw'
+map <Leader>" ysiw"
 
 " Reselect visual block after shift, Duplicate Line/Block
 vnoremap < <gv
@@ -91,11 +94,29 @@ inoremap <silent> <C-S> <Esc>:if expand("%") == ""<CR>browse confirm w<CR>else<C
 noremap <Leader>[ :tabprev<CR>
 noremap <Leader>] :tabnext<CR>
 
+" vimdiff
+if &diff
+  map <silent> <leader>1 :diffget LOCAL<CR>
+  map <silent> <leader>2 :diffget BASE<CR>
+  map <silent> <leader>3 :diffget REMOTE<CR>
+  map <silent> <leader>u :diffupdate<CR>
+  map <silent> <leader>wq :wqall<CR>
+  map ] ]c
+  map [ [c
+  map <leader>' ]c
+  map <leader>; [c
+  map <leader>u :diffupdate<CR>
+  map <leader>= /<<< HEAD<CR>
+endif
+
+
 " Command line editing
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
 " Tabstops
+au BufRead,BufNewFile *.tpl set filetype=html
+au BufNewFile,BufRead .*.muttrc set filetype=muttrc
 set tabstop=2
 set ai sw=2 sts=2 et smartindent
 augroup myfiletypes
@@ -110,6 +131,8 @@ augroup myfiletypes
   autocmd FileType tpl,html set ai sw=2 sts=2 et smartindent tabstop=2
   autocmd FileType css set smartindent tabstop=2
   autocmd FileType c,h set smartindent tabstop=8
+  " Tabs only
+  autocmd FileType conf set noet ci pi sts=0 sw=8 ts=8
   " Poor Man's Macros: def<cr> expands to full Ruby method definition
   " "autocmd FileType ruby iab def def<cr>end<esc>-A
 augroup END
